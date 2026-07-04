@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}SR Associates - Complexity Simplified.{% endblock %}</title>
+  <meta name="description"
+    content="SR is a boutique technology consulting studio. We help companies AI-enable their products — and build, modernize and run the software and infrastructure underneath.">
+  <meta name="theme-color" content="#0E1A2B">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SR Associates — Complexity. Simplified.">
+  <meta property="og:description"
+    content="A boutique technology consulting studio. AI enablement, product engineering, cloud & DevOps.">
+  <meta property="og:image" content="https://srassociates.co/static/assets/og-image.png">
+  <meta property="og:url" content="https://srassociates.co/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png">
+
+  <!-- Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/css/styles.css">
+
+  <!-- Organization structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SR Associates",
+    "url": "https://srassociates.co/",
+    "logo": "https://srassociates.co/static/assets/favicon.svg",
+    "slogan": "Complexity. Simplified.",
+    "email": "hello@srassociates.co",
+    "foundingDate": "2026",
+    "address": [
+      { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+      { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" }
+    ]
+  }
+  </script>
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% include "partials/nav.html" %}
+
+  <main id="main">
+    {% block main %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+</body>
+
+</html>

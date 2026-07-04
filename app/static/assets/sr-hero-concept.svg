@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Tangled wires resolving into a single clean orange line">
+  <rect width="1536" height="1024" fill="#F4F5F6"/>
+  <!-- tangle: many navy strands entering from the left, converging on the cube -->
+  <g fill="none" stroke="#0E1A2B" stroke-opacity="0.16" stroke-width="7" stroke-linecap="round">
+    <path d="M-20 210 C 260 260, 360 430, 690 500"/>
+    <path d="M-20 320 C 300 300, 300 560, 690 512"/>
+    <path d="M-20 430 C 220 470, 420 470, 690 505"/>
+    <path d="M-20 540 C 260 520, 380 520, 690 512"/>
+    <path d="M-20 650 C 240 640, 430 560, 690 518"/>
+    <path d="M-20 760 C 300 720, 360 600, 690 522"/>
+    <path d="M-20 150 C 340 210, 300 470, 690 498"/>
+    <path d="M-20 840 C 280 800, 420 590, 690 524"/>
+  </g>
+  <g fill="none" stroke="#0E1A2B" stroke-opacity="0.30" stroke-width="7" stroke-linecap="round">
+    <path d="M-20 380 C 280 400, 400 500, 690 508"/>
+    <path d="M-20 600 C 300 560, 380 540, 690 514"/>
+  </g>
+  <!-- the cube: complexity resolved -->
+  <rect x="690" y="454" width="120" height="120" rx="20" fill="#0E1A2B"/>
+  <!-- single clean orange line out the right -->
+  <path d="M810 514 C 1040 514, 1180 514, 1560 514" fill="none" stroke="#F97316" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="810" cy="514" r="7" fill="#F97316"/>
+</svg>

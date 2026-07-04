@@ -1,0 +1,43 @@
+<section class="section alt" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Have something to build, modernize, or AI-enable?</h2>
+      <p>Let's talk. The first conversation is free.</p>
+      <a class="email-link" href="mailto:hello@srassociates.co">hello@srassociates.co</a>
+    </div>
+
+    {% if sent %}
+    <div class="card-form form-sent" role="status">
+      <h3>Thanks — we've got it.</h3>
+      <p>We'll be in touch shortly at the email you provided.</p>
+      <a class="btn btn-outline" href="#top">Back to top</a>
+    </div>
+    {% else %}
+    <form class="card-form" action="/contact" method="post">
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <!-- honeypot: hidden from people, tempting to bots -->
+      <div class="hp" aria-hidden="true">
+        <label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <button type="submit" class="btn btn-orange">Send</button>
+    </form>
+    {% endif %}
+  </div>
+</section>
