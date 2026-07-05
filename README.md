@@ -1,63 +1,69 @@
 # sr-site
 
-The **SR Associates** marketing website — FastAPI + Jinja2 + plain HTML/CSS.
+The **SR Associates** marketing website.
+Source is templated (FastAPI + Jinja2 for local dev); it builds to a **static site** in `dist/` that is deployed on **Cloudflare Pages**.
 
-> Tagline: **COMPLEXITY. SIMPLIFIED.** · Live domain (target): [srassociates.co](https://srassociates.co)
+> Tagline: **COMPLEXITY. SIMPLIFIED.** · Domain: [srassociates.co](https://srassociates.co)
 
-## Stack
+## How it fits together
 
-- **FastAPI** (serves the page + handles the contact form)
-- **Jinja2** templates (a `base.html` + section partials)
-- **Plain CSS** (one stylesheet, CSS variables for the palette). Mobile nav is CSS-only.
-
-## Project layout
+- **Author** in `app/templates/` (a `base.html` + section partials) and `app/static/` (CSS + assets).
+- **Preview locally** with FastAPI (live reload), or by serving `dist/`.
+- **Build** with `python build.py` → renders `dist/index.html`, `dist/thanks.html`, and copies `dist/static/`.
+- **Deploy**: Cloudflare Pages serves the committed `dist/` folder. The contact form posts to **Web3Forms** (no backend needed).
 
 ```
 app/
-├── main.py                 # FastAPI app: routes, static mount, /contact handler
-├── templates/
-│   ├── base.html           # <head>, meta/SEO, nav + footer includes
-│   ├── index.html          # includes the section partials
-│   └── partials/           # nav, hero, intro, services, why, industries, work, about, contact, footer
-└── static/
-    ├── css/styles.css
-    └── assets/             # favicon.svg, sr-hero-concept.svg (+ og-image / apple-touch-icon to add)
+├── main.py                 # FastAPI dev server (optional, for local preview)
+├── templates/              # base.html, index.html, partials/*
+└── static/                 # css/, assets/ (favicon, hero placeholder)
+build.py                    # renders templates → dist/  (run before committing)
+dist/                       # generated static site (committed; Cloudflare serves this)
 requirements.txt
-.env.example                # copy to .env for SMTP (optional)
 ```
 
-## Run locally
+## Local preview
+
+Templated dev server (live reload):
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload          # http://127.0.0.1:8000
+```
+
+Or preview the built static output:
+```bash
+python build.py
+cd dist && python -m http.server 8000  # http://127.0.0.1:8000
+```
+
+## Build
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-# open http://127.0.0.1:8000
+python build.py     # regenerate dist/ after ANY change to templates or static assets
 ```
+Then commit `dist/` so Cloudflare publishes the update.
 
-## Contact form
+## Contact form (Web3Forms)
 
-`POST /contact` validates the fields (with a honeypot for spam) and emails the enquiry.
+The form in `app/templates/partials/contact.html` posts to Web3Forms (free, no backend).
+1. Sign up at **https://web3forms.com** with the email that should receive enquiries (e.g. `hello@srassociates.co`).
+2. Copy your **Access Key** and replace `YOUR_WEB3FORMS_ACCESS_KEY` in `contact.html`.
+3. `python build.py` and commit. Submissions redirect to `/thanks`.
 
-- If **`SMTP_HOST` is unset**, submissions are **logged to stdout** — nothing is sent. Safe for launch before email is set up.
-- To enable email, copy `.env.example` → `.env` and fill the SMTP values (Google Workspace / Zoho), then run with an env loader or export the vars.
+## Deploy — Cloudflare Pages
 
-## Deploy (production)
+1. Push this repo to GitHub (`CodeColla/sr-site`).
+2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick `sr-site`.
+3. Build settings: **Framework preset: None**, **Build command: _(leave empty)_**, **Build output directory: `dist`**.
+4. Deploy. You get a `*.pages.dev` URL immediately.
+5. **Custom domain**: Pages → your project → **Custom domains → Set up** → `srassociates.co` (and `www`). Cloudflare adds the DNS + TLS automatically (fastest if the domain's nameservers are on Cloudflare).
 
-Any Python host works. Recommended: **self-host** behind nginx.
-
-```bash
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000
-# reverse-proxy 80/443 → 8000 with nginx + Let's Encrypt (TLS)
-# run under systemd (or a process manager) to keep it alive
-```
-
-Point `srassociates.co` DNS at the host. `GET /health` returns `{"status":"ok"}` for uptime checks.
+> Optional (auto-build instead of committing `dist/`): set Build command to
+> `pip install -r requirements.txt && python build.py` and gitignore `dist/`.
 
 ## Assets still to add
 
-- `static/assets/og-image.png` — 1200×630 social share image (navy bg + reversed wordmark + tagline).
-- `static/assets/apple-touch-icon.png` — 180×180 icon tile.
-- `static/assets/sr-hero-concept.svg` — currently an on-brand **placeholder**; swap for the final hero render (PNG/SVG) when ready and update the `<img>` in `templates/partials/hero.html`.
+- `static/assets/og-image.png` — 1200×630 social share image.
+- `static/assets/apple-touch-icon.png` — 180×180 icon.
+- `static/assets/sr-hero-concept.svg` — on-brand **placeholder**; swap for the final hero render and update `partials/hero.html`.

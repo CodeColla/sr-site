@@ -10,10 +10,15 @@
     <div class="card-form form-sent" role="status">
       <h3>Thanks — we've got it.</h3>
       <p>We'll be in touch shortly at the email you provided.</p>
-      <a class="btn btn-outline" href="#top">Back to top</a>
+      <a class="btn btn-outline" href="/">Back to home</a>
     </div>
     {% else %}
-    <form class="card-form" action="/contact" method="post">
+    <!-- Delivered via Web3Forms (free). Replace the access_key with your own from https://web3forms.com -->
+    <form class="card-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New enquiry from srassociates.co">
+      <input type="hidden" name="from_name" value="SR Associates Website">
+      <input type="hidden" name="redirect" value="https://srassociates.co/thanks#contact">
       <div class="form-row">
         <div class="field">
           <label for="name">Name</label>
@@ -32,10 +37,8 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
       </div>
-      <!-- honeypot: hidden from people, tempting to bots -->
-      <div class="hp" aria-hidden="true">
-        <label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-      </div>
+      <!-- honeypot (Web3Forms) — hidden from people, catches bots -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-orange">Send</button>
     </form>
     {% endif %}
