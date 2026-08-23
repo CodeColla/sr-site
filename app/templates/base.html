@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}SR Associates - Complexity Simplified.{% endblock %}</title>
   <meta name="description"
-    content="SR is a boutique technology consulting studio. We help companies AI-enable their products — and build, modernize and run the software and infrastructure underneath.">
+    content="SR is a boutique digital agency & growth partner — content, marketing and design on one side; custom apps and websites that actually ship on the other.">
   <meta name="theme-color" content="#0E1A2B">
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="SR Associates — Complexity. Simplified.">
   <meta property="og:description"
-    content="A boutique technology consulting studio. AI enablement, product engineering, cloud & DevOps.">
+    content="A boutique digital agency & growth partner. Content, marketing, design, and custom software development.">
   <meta property="og:image" content="https://srassociates.co/static/assets/og-image.png">
   <meta property="og:url" content="https://srassociates.co/">
   <meta name="twitter:card" content="summary_large_image">
@@ -21,14 +21,16 @@
   <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png">
 
-  <!-- Space Grotesk -->
+  <!-- Inter (site body/UI text) + Space Grotesk 700 (wordmark/logo only, used inline in nav/footer SVGs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@700&display=swap"
     rel="stylesheet">
 
   <link rel="canonical" href="https://srassociates.co/">
   <link rel="stylesheet" href="/static/css/styles.css">
+  <script defer src="/static/js/nav-spy.js"></script>
 
   <!-- Organization structured data -->
   <script type="application/ld+json">
@@ -42,10 +44,8 @@
     "email": "hello@srassociates.co",
     "foundingDate": "2026",
     "sameAs": ["https://www.linkedin.com/company/sr-associates-co/"],
-    "address": [
-      { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
-      { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" }
-    ]
+    "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+    "areaServed": ["IN", "AU"]
   }
   </script>
 </head>

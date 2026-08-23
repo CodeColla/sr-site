@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SR Associates - Complexity Simplified.</title>
   <meta name="description"
-    content="SR is a boutique technology consulting studio. We help companies AI-enable their products — and build, modernize and run the software and infrastructure underneath.">
+    content="SR is a boutique digital agency & growth partner — content, marketing and design on one side; custom apps and websites that actually ship on the other.">
   <meta name="theme-color" content="#0E1A2B">
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="SR Associates — Complexity. Simplified.">
   <meta property="og:description"
-    content="A boutique technology consulting studio. AI enablement, product engineering, cloud & DevOps.">
+    content="A boutique digital agency & growth partner. Content, marketing, design, and custom software development.">
   <meta property="og:image" content="https://srassociates.co/static/assets/og-image.png">
   <meta property="og:url" content="https://srassociates.co/">
   <meta name="twitter:card" content="summary_large_image">
@@ -21,14 +21,16 @@
   <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png">
 
-  <!-- Space Grotesk -->
+  <!-- Inter (site body/UI text) + Space Grotesk 700 (wordmark/logo only, used inline in nav/footer SVGs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@700&display=swap"
     rel="stylesheet">
 
   <link rel="canonical" href="https://srassociates.co/">
   <link rel="stylesheet" href="/static/css/styles.css">
+  <script defer src="/static/js/nav-spy.js"></script>
 
   <!-- Organization structured data -->
   <script type="application/ld+json">
@@ -42,10 +44,8 @@
     "email": "hello@srassociates.co",
     "foundingDate": "2026",
     "sameAs": ["https://www.linkedin.com/company/sr-associates-co/"],
-    "address": [
-      { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
-      { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" }
-    ]
+    "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+    "areaServed": ["IN", "AU"]
   }
   </script>
 </head>
@@ -70,8 +70,8 @@
     <nav class="primary-nav" aria-label="Primary">
       <a href="#services">Services</a>
       <a href="#why">Why SR</a>
-      <a href="#industries">Industries</a>
       <a href="#work">Work</a>
+      <a href="#industries">Industries</a>
       <a href="#contact">Contact</a>
       <a class="btn btn-orange btn-sm" href="#contact">Book a call</a>
     </nav>
@@ -89,22 +89,22 @@
       <p class="eyebrow">SR</p>
       <h1>COMPLEXITY<br>SIMPLIFIED.</h1>
       <p class="lead">
-        <br>
-        <br>
-        We help companies AI enable their products and build, modernize and run the software and
-        infrastructure underneath.
+        We're the engine room behind growing brands and products — content, marketing and
+        design on one side; custom apps and websites that actually ship on the other.
       </p>
       <div class="hero-actions">
         <a class="btn btn-orange" href="#contact">Book a discovery call</a>
         <a class="btn btn-outline" href="#services">See what we do</a>
       </div>
-      <p class="meta"><span class="dot" aria-hidden="true"></span> Operating across India &amp; Australia.</p>
+      <p class="meta"><span class="dot" aria-hidden="true"></span> Serving clients across India &amp; Australia.</p>
     </div>
   </div>
 </section>
   <section class="intro">
   <div class="wrap">
-    <p>Most teams can bolt on AI. Few can make it ship and survive in production. <strong>SR does both.</strong></p>
+    <p>Great ideas don't build themselves. Someone has to brainstorm the campaign, write the
+      blog post, design the collateral, cut the video, and keep the systems running — every
+      single week. <strong>That someone is us.</strong></p>
   </div>
 </section>
   <section class="section" id="services">
@@ -112,25 +112,36 @@
     <div class="rule" aria-hidden="true"></div>
     <div class="section-head">
       <h2>What we do</h2>
-      <p>Six practices, one senior team from a first AI prototype to the infrastructure it runs on.</p>
+      <p>Two pillars, one senior team — content and marketing on one side, custom software on the other.</p>
     </div>
-    <div class="services-grid">
+    <div class="pillars-grid">
 
       <article class="card card-lead">
         <div class="lead-row">
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
-              <path d="M12 4V20M5.1 8L18.9 16M18.9 8L5.1 16"></path>
+              <rect x="4" y="4" width="16" height="4" rx="1.4"></rect>
+              <rect x="4" y="10" width="16" height="4" rx="1.4"></rect>
+              <rect x="4" y="16" width="10" height="4" rx="1.4"></rect>
             </svg>
           </span>
           <span class="tag">LEAD</span>
         </div>
-        <h3>AI Enablement</h3>
-        <p>Assistants, search, summarization, and automation woven into your product.</p>
+        <h3>Content, Design &amp; Digital Operations</h3>
+        <p>The engine room behind growing brands — content, brand and the systems that keep it all running.</p>
+        <ul class="card-list">
+          <li>Content creation &amp; brainstorming</li>
+          <li>Social media</li>
+          <li>Design &amp; publications</li>
+          <li>Video editing &amp; podcasts</li>
+          <li>CRM &amp; database management</li>
+          <li>Website &amp; platform management</li>
+          <li>Marketing &amp; sales operations</li>
+        </ul>
       </article>
 
-      <article class="card card-lead">
+      <article class="card">
         <span class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
             stroke-linejoin="round">
@@ -138,58 +149,13 @@
             <path d="M3.5 9H20.5"></path>
           </svg>
         </span>
-        <h3>Product Design → Development</h3>
-        <p>Web, mobile, APIs, and platforms designed and built end to end.</p>
-      </article>
-
-      <article class="card card-lead">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M12 3 4 7l8 4 8-4-8-4Z"></path>
-            <path d="M4 12l8 4 8-4"></path>
-            <path d="M4 16.5l8 4 8-4"></path>
-          </svg>
-        </span>
-        <h3>Platform &amp; Enterprise Engineering</h3>
-        <p>Custom software, integrations, and modernization of legacy systems.</p>
-      </article>
-
-      <article class="card card-lead">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M7 18A4 4 0 0 1 7 10A5 5 0 0 1 16.5 8.8A3.6 3.6 0 0 1 17 18Z"></path>
-          </svg>
-        </span>
-        <h3>Cloud, Infra &amp; DevOps</h3>
-        <p>Setup, CI/CD, observability, and cost optimization.</p>
-      </article>
-
-      <article class="card card-lead">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="4" y="4" width="6.5" height="6.5" rx="1.4"></rect>
-            <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.4"></rect>
-            <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.4"></rect>
-            <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.4"></rect>
-          </svg>
-        </span>
-        <h3>ERP &amp; Open-Source Platforms</h3>
-        <p>ERPNext, Nextcloud, Mattermost, and custom ERP.</p>
-      </article>
-
-      <article class="card card-lead">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3Z"></path>
-            <path d="M9 12l2 2 4-4"></path>
-          </svg>
-        </span>
-        <h3>Process &amp; Compliance Consulting</h3>
-        <p>SDLC setup and audit-readiness.</p>
+        <h3>Product &amp; Platform Development</h3>
+        <p>Software that ships, not just specs — built by people who write the code themselves.</p>
+        <ul class="card-list">
+          <li>Custom web &amp; mobile apps</li>
+          <li>Internal tools &amp; automations</li>
+          <li>Website builds</li>
+        </ul>
       </article>
 
     </div>
@@ -203,53 +169,101 @@
       <div class="why-col">
         <span class="bar" aria-hidden="true"></span>
         <h3>End-to-end, not just advice.</h3>
-        <p>We don't hand you a deck and leave we build, ship, and run it.</p>
+        <p>We don't hand you a deck and leave — we build, ship, and run it.</p>
       </div>
       <div class="why-col">
         <span class="bar" aria-hidden="true"></span>
         <h3>Founder-led and crafted.</h3>
-        <p>Senior people do the work no hand-off to a junior bench.</p>
+        <p>Senior people do the work — no hand-off to a junior bench.</p>
       </div>
       <div class="why-col">
         <span class="bar" aria-hidden="true"></span>
-        <h3>India &amp; Australia.</h3>
-        <p>Two time zones, one team momentum around the clock.</p>
+        <h3>India, aligned to Australia.</h3>
+        <p>Delivery from India, timezone- and market-aligned with Australia.</p>
       </div>
       <div class="why-col">
         <span class="bar" aria-hidden="true"></span>
         <h3>We eat our own cooking.</h3>
-        <p>We run the same open-source and AI tooling we deploy for you.</p>
+        <p>We run our own content, marketing and systems on the same playbook we set up for clients.</p>
       </div>
+    </div>
+  </div>
+</section>
+  <section class="section" id="work">
+  <div class="wrap">
+    <div class="rule" aria-hidden="true"></div>
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>Two real engagements, one per pillar — not slideware.</p>
+    </div>
+    <div class="pillars-grid">
+
+      <article class="card">
+        <div class="lead-row">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="4" rx="1.4"></rect>
+              <rect x="4" y="10" width="16" height="4" rx="1.4"></rect>
+              <rect x="4" y="16" width="10" height="4" rx="1.4"></rect>
+            </svg>
+          </span>
+          <span class="tag tag-navy">PILLAR 1</span>
+        </div>
+        <h3>A CXO leadership-coaching firm</h3>
+        <p>Content writing, social media, design and podcast production — plus UI/UX consultation on their app. An ongoing engagement.</p>
+        <ul class="card-list">
+          <li>Content</li>
+          <li>Social media</li>
+          <li>Design</li>
+          <li>Podcast production</li>
+          <li>UX consulting</li>
+        </ul>
+      </article>
+
+      <article class="card card-lead">
+        <div class="lead-row">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3.5" y="5" width="17" height="14" rx="2"></rect>
+              <path d="M3.5 9H20.5"></path>
+            </svg>
+          </span>
+          <span class="tag">PILLAR 2</span>
+        </div>
+        <h3>Proctor Hire</h3>
+        <p>An affordable hiring platform — designed and built solo, part-time, in ~2 weeks. Live in production today.</p>
+        <ul class="card-list">
+          <li>Web app</li>
+          <li>Solo build</li>
+          <li>In production</li>
+        </ul>
+      </article>
+
     </div>
   </div>
 </section>
   <section class="section" id="industries">
   <div class="wrap">
     <div class="rule" aria-hidden="true"></div>
-    <h2 class="mb">Industries we serve.</h2>
+    <h2 class="mb">Who we work with.</h2>
     <div class="ind-group">
-      <!-- <p class="ind-label">We Serve.</p> -->
+      <p class="ind-label">We know these well:</p>
       <div class="pills">
-        <span class="pill pill-solid">FinTech &amp; Banking</span>
-        <span class="pill pill-solid">Coaching / Wellness / Learning</span>
-        <span class="pill pill-solid">IoT</span>
-        <span class="pill pill-solid">Healthcare</span>
-        <span class="pill pill-solid">Pharma</span>
-        <span class="pill pill-solid">Enterprise software</span>
+        <span class="pill pill-solid">Founder-led SMBs</span>
+        <span class="pill pill-solid">Coaching</span>
+        <span class="pill pill-solid">Wellness</span>
+        <span class="pill pill-solid">Learning</span>
       </div>
     </div>
-    <!-- <div class="ind-group">
+    <div class="ind-group">
       <p class="ind-label">We also serve:</p>
-      <div class="pills">
-        <span class="pill pill-outline">IoT</span>
-        <span class="pill pill-outline">Healthcare</span>
-        <span class="pill pill-outline">Pharma</span>
-        <span class="pill pill-outline">Enterprise software</span>
-      </div>
-    </div> -->
+      <p class="ind-note">Any growing brand or product team that needs a content, marketing, design, or build partner they can trust to just get it done.</p>
+    </div>
   </div>
 </section>
-  <section class="section dark" id="work">
+  <section class="section dark" id="process">
   <div class="wrap">
     <div class="rule" aria-hidden="true"></div>
     <h2 class="mb">How we work</h2>
@@ -284,15 +298,15 @@
       <h2>About SR</h2>
     </div>
     <div>
-      <p>SR is a boutique technology studio founded in 2026, operating across Pune, India and Melbourne, Australia. We bring deep, hands-on experience across software engineering, cloud &amp; infrastructure, DevOps, and enterprise &amp; banking technology.</p>
-      <p class="about-meta">Founded 2026 · Pune, India · Melbourne, Australia</p>
+      <p>SR is a boutique studio founded in 2026, based in Pune, India, serving clients across India and Australia. We bring together content, marketing and design with custom app and website development — the engine room for growing brands and products.</p>
+      <p class="about-meta">Founded 2026 · Pune, India · Serving Australia &amp; beyond</p>
     </div>
   </div>
 </section>
   <section class="section alt" id="contact">
   <div class="wrap contact-grid">
     <div class="contact-info">
-      <h2>Have something to build, modernize, or AI-enable?</h2>
+      <h2>Have something to build, grow, or tell the world about?</h2>
       <p>Let's talk. The first conversation is free.</p>
       <a class="email-link" href="mailto:hello@srassociates.co">hello@srassociates.co</a>
     </div>
@@ -346,9 +360,9 @@
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Locations</h4>
+          <h4>Based in</h4>
           <p>Pune, India</p>
-          <p>Melbourne, Australia</p>
+          <p>Serving Australia &amp; beyond</p>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
