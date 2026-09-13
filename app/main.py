@@ -11,6 +11,10 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from app.content.blog_posts import BLOG_POSTS
+from app.content.case_studies import CASE_STUDIES
+from app.pages import PAGES
+
 BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI(title="SR Associates", docs_url=None, redoc_url=None, openapi_url=None)
@@ -18,9 +22,24 @@ app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 
-@app.get("/", response_class=HTMLResponse)
-async def home(request: Request, sent: bool = False):
-    return templates.TemplateResponse(request, "index.html", {"sent": sent})
+def _make_page_route(page):
+    """Closes over `page` via the argument (not the loop variable) so each
+    registered route renders its own page, not whichever page the loop
+    landed on last."""
+
+    async def _route(request: Request, sent: bool = False) -> HTMLResponse:
+        context = {
+            "page": page, "sent": sent,
+            "case_studies": CASE_STUDIES, "blog_posts": BLOG_POSTS,
+            **page.context,
+        }
+        return templates.TemplateResponse(request, page.template, context)
+
+    return _route
+
+
+for _page in PAGES:
+    app.get(_page.path, response_class=HTMLResponse)(_make_page_route(_page))
 
 
 @app.post("/contact")

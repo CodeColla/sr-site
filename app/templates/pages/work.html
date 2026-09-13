@@ -1,13 +1,16 @@
-<section class="section" id="work">
+{% extends "base.html" %}
+
+{% block main %}
+<section class="page-header">
+  <div class="wrap reveal-up">
+    <p class="eyebrow eyebrow-accent">Proof, not promises</p>
+    <h1>Selected work</h1>
+    <p>Real engagements, real products — not slideware. No fabricated screenshots, no invented metrics — what's here is what's confirmed.</p>
+  </div>
+</section>
+
+<section class="section">
   <div class="wrap">
-    <div class="rule" aria-hidden="true"></div>
-    <div class="section-head reveal-up">
-      <div>
-        <p class="eyebrow eyebrow-accent">Proof, not promises</p>
-        <h2>Selected work</h2>
-      </div>
-      <p>Real engagements, real products — not slideware.</p>
-    </div>
     <div class="work-grid">
       {% for cs in case_studies %}
       <article class="card card-photo reveal-up" style="background-image: url('/static/assets/work/{{ cs.slug }}.jpg')">
@@ -15,11 +18,12 @@
           <span class="{{ 'tag-navy' if cs.pillar == 1 else 'tag' }}">{{ cs.tag_label }}</span>
         </div>
         <h3>{{ cs.client }}</h3>
+        <p>{{ cs.sector }}</p>
         <p>{{ cs.teaser }}</p>
         <a class="btn btn-outline-light btn-sm" href="/work/{{ cs.slug }}">Read case study</a>
       </article>
       {% endfor %}
     </div>
-    <p style="margin-top: 32px;"><a class="btn btn-outline" href="/work">See all work</a></p>
   </div>
 </section>
+{% endblock %}

@@ -96,11 +96,34 @@
     </div>
 
     
-    <div class="card-form form-sent" role="status">
-      <h3>Thanks — we've got it.</h3>
-      <p>We'll be in touch shortly at the email you provided.</p>
-      <a class="btn btn-outline" href="/">Back to home</a>
-    </div>
+    <!-- Delivered via Web3Forms (free). Replace the access_key with your own from https://web3forms.com -->
+    <form class="card-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="0b72b9c7-a010-45e9-8722-ae2a340068d2">
+      <input type="hidden" name="subject" value="New enquiry from srassociates.co">
+      <input type="hidden" name="from_name" value="SR Associates Website">
+      <input type="hidden" name="redirect" value="https://srassociates.co/thanks">
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <!-- honeypot (Web3Forms) — hidden from people, catches bots -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-orange">Send</button>
+    </form>
     
   </div>
 </section>

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block main %}
+<section class="page-header card-photo" style="background-image: url('/static/assets/work/{{ cs.slug }}.jpg'); min-height: 320px; border-bottom: none; border-radius: 0;">
+  <div class="wrap reveal-up">
+    <p class="eyebrow eyebrow-accent">{{ cs.tag_label }} · {{ cs.pillar_label }}</p>
+    <h1 style="color: var(--white);">{{ cs.client }}</h1>
+    <p>{{ cs.sector }}</p>
+    <div class="cs-meta">
+      <span class="tag-navy">{{ cs.engagement_type }}</span>
+      {% if cs.live_url %}
+      <a class="tag" href="{{ cs.live_url }}" target="_blank" rel="noopener">Visit live site ↗</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width: 760px;">
+    <div class="reveal-up">
+      <div class="rule" aria-hidden="true"></div>
+      <h2 style="font-size: 28px;">The Challenge</h2>
+      <p style="margin-top: 16px; font-size: 17px; color: #37414F; line-height: 1.65;">{{ cs.challenge }}</p>
+    </div>
+
+    <div class="reveal-up" style="margin-top: 56px;">
+      <div class="rule" aria-hidden="true"></div>
+      <h2 style="font-size: 28px;">What We Did</h2>
+      <ul class="prose-list">
+        {% for item in cs.what_we_did %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% if cs.tech %}
+    <div class="reveal-up" style="margin-top: 56px;">
+      <div class="rule" aria-hidden="true"></div>
+      <h2 style="font-size: 28px;">Tech &amp; Tools</h2>
+      <div class="pills" style="margin-top: 16px;">
+        {% for t in cs.tech %}
+        <span class="pill pill-outline">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="reveal-up" style="margin-top: 56px;">
+      <div class="rule" aria-hidden="true"></div>
+      <h2 style="font-size: 28px;">The Outcome</h2>
+      <ul class="prose-list">
+        {% for item in cs.outcome %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% if cs.testimonial %}
+    <div class="pull-quote reveal-up">
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+      <p>{{ cs.testimonial.quote }}</p>
+      <p class="quote-attribution">{{ cs.testimonial.name }}, {{ cs.testimonial.role }}</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap reveal-up" style="text-align: center;">
+    <h2 style="margin-bottom: 18px;">Want something like this built for you?</h2>
+    <div class="hero-actions" style="justify-content: center;">
+      <a class="btn btn-orange" href="/contact">Book a call</a>
+      <a class="btn btn-outline-light" href="/work">See all work</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

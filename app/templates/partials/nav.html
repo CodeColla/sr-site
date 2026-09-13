@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="SR Associates — home">
+    <a class="brand" href="/" aria-label="SR Associates — home">
       <svg class="wordmark" viewBox="0 0 60 28" width="60" height="28" role="img" aria-label="SR">
         <text x="0" y="22" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="700" letter-spacing="-1.5" fill="currentColor">SR</text>
         <rect x="46" y="2" width="7" height="7" fill="#F97316"></rect>
@@ -13,12 +13,12 @@
     </label>
 
     <nav class="primary-nav" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#why">Why SR</a>
-      <a href="#work">Work</a>
-      <a href="#industries">Industries</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-orange btn-sm" href="#contact">Book a call</a>
+      <a href="/services" class="{{ 'active' if page.path == '/services' }}">Services</a>
+      <a href="/work" class="{{ 'active' if page.path.startswith('/work') }}">Work</a>
+      <a href="/about" class="{{ 'active' if page.path == '/about' }}">About</a>
+      <a href="/blog" class="{{ 'active' if page.path.startswith('/blog') }}">Blog</a>
+      <a href="/contact" class="{{ 'active' if page.path == '/contact' }}">Contact</a>
+      <a class="btn btn-orange btn-sm" href="/contact">Book a call</a>
     </nav>
   </div>
 </header>

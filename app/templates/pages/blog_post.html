@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block main %}
+<section class="page-header">
+  <div class="wrap reveal-up">
+    <p class="eyebrow eyebrow-accent">{{ post.date }} · {{ post.read_time }}</p>
+    <h1>{{ post.title }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width: 720px;">
+    {% for para in post.body %}
+    <p class="reveal-up" style="font-size: 19px; color: #37414F; line-height: 1.7; margin-bottom: 22px;">{{ para }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="wrap" style="max-width: 720px;">
+    <p style="border-top: 1px solid var(--hairline); padding-top: 24px;">
+      <a class="icon-link btn btn-outline btn-sm" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | urlencode }}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <rect x="3" y="9" width="4" height="12" rx="1"></rect>
+          <circle cx="5" cy="4.5" r="2.5"></circle>
+          <path d="M11 9h4v2.2c.8-1.5 2.3-2.5 4.3-2.5 3.6 0 5.7 2.4 5.7 6.9V21h-4v-4.9c0-2.2-.8-3.7-2.7-3.7-1.5 0-2.4 1-2.8 2-.15.35-.2.85-.2 1.35V21h-4V9z"></path>
+        </svg>
+        Share on LinkedIn
+      </a>
+    </p>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap reveal-up" style="text-align: center;">
+    <h2 style="margin-bottom: 18px;">Have something to build, grow, or tell the world about?</h2>
+    <div class="hero-actions" style="justify-content: center;">
+      <a class="btn btn-orange" href="/contact">Book a call</a>
+      <a class="btn btn-outline-light" href="/blog">More from the blog</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
