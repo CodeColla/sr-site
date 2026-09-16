@@ -220,14 +220,11 @@ section { scroll-margin-top: 84px; }
 .js .reveal-up.reveal-delay-1 { transition-delay: .08s; }
 .js .reveal-up.reveal-delay-2 { transition-delay: .16s; }
 
-/* ---------- icon badge (circular, for section/pillar headers) ---------- */
-.icon-badge {
-  width: 52px; height: 52px; border-radius: 50%; background: var(--navy); color: var(--white);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+/* ---------- card image (full-width photo banner at top of a service card, no text overlay) ---------- */
+.card-img {
+  width: 100%; aspect-ratio: 16 / 9; border-radius: 12px;
+  background-color: var(--canvas); background-size: cover; background-position: center;
 }
-.icon-badge svg { width: 24px; height: 24px; }
-.icon-badge.on-dark { background: rgba(255,255,255,.1); }
-.icon-badge.accent { background: var(--orange); }
 
 /* ---------- section eyebrow (accent variant of the hero .eyebrow) ---------- */
 .eyebrow-accent { color: var(--orange); }
@@ -246,19 +243,8 @@ section { scroll-margin-top: 84px; }
 .pillar-copy h3 { font-size: 30px; margin-bottom: 14px; }
 .pillar-copy > p { font-size: 17px; color: var(--text2); line-height: 1.6; margin-bottom: 18px; }
 .pillar-panel {
-  aspect-ratio: 4 / 3; border-radius: 16px; position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center; background: var(--navy);
-}
-.pillar-panel.alt-panel { background: var(--canvas); }
-.pillar-panel .panel-icon { width: 68%; max-width: 280px; opacity: .95; position: relative; z-index: 1; }
-.pillar-panel .panel-icon svg { width: 100%; height: auto; color: var(--white); }
-.pillar-panel.alt-panel .panel-icon svg { color: var(--navy); }
-.pillar-panel .panel-texture {
-  position: absolute; inset: 0; opacity: .1; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%23ffffff'/%3E%3C/svg%3E");
-}
-.pillar-panel.alt-panel .panel-texture {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%230E1A2B'/%3E%3C/svg%3E");
+  aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden;
+  background-color: var(--canvas); background-size: contain; background-repeat: no-repeat; background-position: center;
 }
 
 /* ---------- pull-quote / testimonial block ---------- */
@@ -300,9 +286,11 @@ section { scroll-margin-top: 84px; }
 .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .footer-brand .brand { color: var(--white); }
 .tagline { margin-top: 16px; font-size: 13px; font-weight: 300; letter-spacing: .18em; color: var(--on-navy); }
-.footer-cols { display: flex; gap: 72px; }
-.footer-col h4 { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #6B7686; margin-bottom: 10px; }
+.footer-cols { display: flex; flex-wrap: wrap; gap: 40px 56px; }
+.footer-col { min-width: 150px; }
+.footer-col h4 { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #6B7686; margin-bottom: 14px; }
 .footer-col a, .footer-col p { font-size: 15px; color: #D6DCE3; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-col a:hover { color: var(--white); }
 .icon-link { display: inline-flex; align-items: center; gap: 7px; }
 .icon-link svg { width: 17px; height: 17px; flex-shrink: 0; }

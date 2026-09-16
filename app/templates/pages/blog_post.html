@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block main %}
-<section class="page-header">
+<section class="page-header card-photo" style="background-image: url('/static/assets/blog/{{ post.slug }}.jpg'); min-height: 280px; border-bottom: none; border-radius: 0;">
   <div class="wrap reveal-up">
     <p class="eyebrow eyebrow-accent">{{ post.date }} · {{ post.read_time }}</p>
-    <h1>{{ post.title }}</h1>
+    <h1 style="color: var(--white);">{{ post.title }}</h1>
   </div>
 </section>
 

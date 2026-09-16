@@ -18,7 +18,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from app.content.blog_posts import BLOG_POSTS
 from app.content.case_studies import CASE_STUDIES
-from app.pages import PAGES, get_page
+from app.pages import ASSET_VERSION, PAGES, get_page
 
 BASE = Path(__file__).resolve().parent
 TEMPLATES = BASE / "app" / "templates"
@@ -48,13 +48,15 @@ def main() -> None:
     for page in PAGES:
         _write(
             page.template, page.dist_path, page=page, sent=False,
-            case_studies=CASE_STUDIES, blog_posts=BLOG_POSTS, **page.context,
+            case_studies=CASE_STUDIES, blog_posts=BLOG_POSTS,
+            asset_version=ASSET_VERSION, **page.context,
         )
 
     contact = get_page("/contact")
     _write(
         contact.template, "thanks.html", page=contact, sent=True,
-        case_studies=CASE_STUDIES, blog_posts=BLOG_POSTS, **contact.context,
+        case_studies=CASE_STUDIES, blog_posts=BLOG_POSTS,
+        asset_version=ASSET_VERSION, **contact.context,
     )
 
     shutil.copytree(STATIC, DIST / "static")

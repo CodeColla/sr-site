@@ -13,7 +13,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.content.blog_posts import BLOG_POSTS
 from app.content.case_studies import CASE_STUDIES
-from app.pages import PAGES
+from app.pages import ASSET_VERSION, PAGES
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -31,6 +31,7 @@ def _make_page_route(page):
         context = {
             "page": page, "sent": sent,
             "case_studies": CASE_STUDIES, "blog_posts": BLOG_POSTS,
+            "asset_version": ASSET_VERSION,
             **page.context,
         }
         return templates.TemplateResponse(request, page.template, context)

@@ -3,12 +3,12 @@
     <div class="contact-info">
       <p>Prefer email?</p>
       <a class="email-link" href="mailto:hello@srassociates.co">hello@srassociates.co</a>
-      <p style="margin-top: 24px; font-size: 15px; color: var(--text2);">We reply within one business day. No sales deck, no obligation — just a real conversation about what you're trying to do.</p>
+      <p style="margin-top: 24px; font-size: 15px; color: var(--text2);">We reply within one business day. No sales deck, no obligation, just a real conversation about what you're trying to do.</p>
     </div>
 
     {% if sent %}
     <div class="card-form form-sent" role="status">
-      <h3>Thanks — we've got it.</h3>
+      <h3>Thanks, we've got it.</h3>
       <p>We'll be in touch shortly at the email you provided.</p>
       <a class="btn btn-outline" href="/">Back to home</a>
     </div>
@@ -37,7 +37,7 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
       </div>
-      <!-- honeypot (Web3Forms) — hidden from people, catches bots -->
+      <!-- honeypot (Web3Forms): hidden from people, catches bots -->
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-orange">Send</button>
     </form>

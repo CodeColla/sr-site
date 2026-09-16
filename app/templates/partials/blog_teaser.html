@@ -11,11 +11,11 @@
     </div>
     <div class="pillars-grid">
       {% for post in blog_posts[:2] %}
-      <article class="card reveal-up">
+      <article class="card card-photo reveal-up" style="background-image: url('/static/assets/blog/{{ post.slug }}.jpg')">
         <p class="ind-label" style="margin-bottom: 0;">{{ post.date }} · {{ post.read_time }}</p>
         <h3>{{ post.title }}</h3>
         <p>{{ post.excerpt }}</p>
-        <a class="btn btn-outline btn-sm" href="/blog/{{ post.slug }}">Read post</a>
+        <a class="btn btn-outline-light btn-sm" href="/blog/{{ post.slug }}">Read post</a>
       </article>
       {% endfor %}
     </div>

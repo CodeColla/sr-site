@@ -5,7 +5,7 @@
   <div class="wrap reveal-up">
     <p class="eyebrow eyebrow-accent">Notes</p>
     <h1>Blog</h1>
-    <p>Notes on content, marketing, and building software — from the SR team.</p>
+    <p>Notes on content, marketing, and building software, from the SR team.</p>
     <p style="margin-top: 18px;">
       <a class="icon-link" href="https://www.linkedin.com/company/sr-associates-co" target="_blank" rel="noopener" style="color: var(--navy); font-weight: 600; font-size: 15px;">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -24,16 +24,16 @@
     {% if blog_posts %}
     <div class="work-grid">
       {% for post in blog_posts %}
-      <article class="card reveal-up">
+      <article class="card card-photo reveal-up" style="background-image: url('/static/assets/blog/{{ post.slug }}.jpg')">
         <p class="ind-label" style="margin-bottom: 0;">{{ post.date }} · {{ post.read_time }}</p>
         <h3>{{ post.title }}</h3>
         <p>{{ post.excerpt }}</p>
-        <a class="btn btn-outline btn-sm" href="/blog/{{ post.slug }}">Read post</a>
+        <a class="btn btn-outline-light btn-sm" href="/blog/{{ post.slug }}">Read post</a>
       </article>
       {% endfor %}
     </div>
     {% else %}
-    <p class="reveal-up" style="font-size: 18px; color: var(--text2);">More soon — check back shortly.</p>
+    <p class="reveal-up" style="font-size: 18px; color: var(--text2);">More soon, check back shortly.</p>
     {% endif %}
   </div>
 </section>
