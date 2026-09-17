@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}SR Associates - Complexity Simplified.{% endblock %}</title>
-  <meta name="description"
-    content="SR is a boutique technology consulting studio. We help companies AI-enable their products — and build, modernize and run the software and infrastructure underneath.">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}">
   <meta name="theme-color" content="#0E1A2B">
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SR Associates — Complexity. Simplified.">
-  <meta property="og:description"
-    content="A boutique technology consulting studio. AI enablement, product engineering, cloud & DevOps.">
-  <meta property="og:image" content="https://srassociates.co/static/assets/og-image.png">
-  <meta property="og:url" content="https://srassociates.co/">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:image" content="https://srassociates.co/static/assets/og-image.svg">
+  <meta property="og:url" content="{{ page.url }}">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png">
+  <!-- apple-touch-icon: add a 180x180 PNG (Apple doesn't reliably support SVG here) and re-add the <link> -->
 
-  <!-- Space Grotesk -->
+  <!-- Inter (site body/UI text) + Space Grotesk 700 (wordmark/logo only, used inline in nav/footer SVGs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@700&display=swap"
     rel="stylesheet">
 
-  <link rel="canonical" href="https://srassociates.co/">
-  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="canonical" href="{{ page.url }}">
+  <link rel="stylesheet" href="/static/css/styles.css?v={{ asset_version }}">
+  <script defer src="/static/js/reveal.js?v={{ asset_version }}"></script>
 
   <!-- Organization structured data -->
   <script type="application/ld+json">
@@ -41,11 +42,7 @@
     "slogan": "Complexity. Simplified.",
     "email": "hello@srassociates.co",
     "foundingDate": "2026",
-    "sameAs": ["https://www.linkedin.com/company/sr-associates-co/"],
-    "address": [
-      { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
-      { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" }
-    ]
+    "sameAs": ["https://www.linkedin.com/company/sr-associates-co/"]
   }
   </script>
 </head>

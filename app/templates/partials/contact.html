@@ -1,14 +1,14 @@
-<section class="section alt" id="contact">
-  <div class="wrap contact-grid">
+<section class="section" id="contact">
+  <div class="wrap contact-grid reveal-up">
     <div class="contact-info">
-      <h2>Have something to build, modernize, or AI-enable?</h2>
-      <p>Let's talk. The first conversation is free.</p>
+      <p>Prefer email?</p>
       <a class="email-link" href="mailto:hello@srassociates.co">hello@srassociates.co</a>
+      <p style="margin-top: 24px; font-size: 15px; color: var(--text2);">We reply within one business day. No sales deck, no obligation, just a real conversation about what you're trying to do.</p>
     </div>
 
     {% if sent %}
     <div class="card-form form-sent" role="status">
-      <h3>Thanks — we've got it.</h3>
+      <h3>Thanks, we've got it.</h3>
       <p>We'll be in touch shortly at the email you provided.</p>
       <a class="btn btn-outline" href="/">Back to home</a>
     </div>
@@ -18,7 +18,7 @@
       <input type="hidden" name="access_key" value="0b72b9c7-a010-45e9-8722-ae2a340068d2">
       <input type="hidden" name="subject" value="New enquiry from srassociates.co">
       <input type="hidden" name="from_name" value="SR Associates Website">
-      <input type="hidden" name="redirect" value="https://srassociates.co/thanks#contact">
+      <input type="hidden" name="redirect" value="https://srassociates.co/thanks">
       <div class="form-row">
         <div class="field">
           <label for="name">Name</label>
@@ -37,7 +37,7 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
       </div>
-      <!-- honeypot (Web3Forms) — hidden from people, catches bots -->
+      <!-- honeypot (Web3Forms): hidden from people, catches bots -->
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-orange">Send</button>
     </form>

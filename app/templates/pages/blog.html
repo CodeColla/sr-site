@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block main %}
+<section class="page-header">
+  <div class="wrap reveal-up">
+    <p class="eyebrow eyebrow-accent">Notes</p>
+    <h1>Blog</h1>
+    <p>Notes on content, marketing, and building software, from the SR team.</p>
+    <p style="margin-top: 18px;">
+      <a class="icon-link" href="https://www.linkedin.com/company/sr-associates-co" target="_blank" rel="noopener" style="color: var(--navy); font-weight: 600; font-size: 15px;">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <rect x="3" y="9" width="4" height="12" rx="1"></rect>
+          <circle cx="5" cy="4.5" r="2.5"></circle>
+          <path d="M11 9h4v2.2c.8-1.5 2.3-2.5 4.3-2.5 3.6 0 5.7 2.4 5.7 6.9V21h-4v-4.9c0-2.2-.8-3.7-2.7-3.7-1.5 0-2.4 1-2.8 2-.15.35-.2.85-.2 1.35V21h-4V9z"></path>
+        </svg>
+        Follow SR on LinkedIn for more
+      </a>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {% if blog_posts %}
+    <div class="work-grid">
+      {% for post in blog_posts %}
+      <article class="card card-photo reveal-up" style="background-image: url('/static/assets/blog/{{ post.slug }}.jpg')">
+        <p class="ind-label" style="margin-bottom: 0;">{{ post.date }} · {{ post.read_time }}</p>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+        <a class="btn btn-outline-light btn-sm" href="/blog/{{ post.slug }}">Read post</a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="reveal-up" style="font-size: 18px; color: var(--text2);">More soon, check back shortly.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

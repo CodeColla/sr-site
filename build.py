@@ -1,7 +1,11 @@
 """Render the Jinja templates to a static site in ./dist for Cloudflare Pages.
 
 Usage:  python build.py
-Output: dist/index.html, dist/thanks.html, dist/static/...
+Output: dist/index.html, dist/services/index.html, dist/work/index.html,
+        dist/work/<slug>/index.html, dist/about/index.html, dist/blog/index.html,
+        dist/blog/<slug>/index.html, dist/contact/index.html, dist/thanks.html
+        (rendered from the contact page template, since that's where the form lives),
+        dist/static/...
 
 Run this after editing anything under app/templates or app/static, then commit dist/.
 """
@@ -11,6 +15,10 @@ import shutil
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+from app.content.blog_posts import BLOG_POSTS
+from app.content.case_studies import CASE_STUDIES
+from app.pages import ASSET_VERSION, PAGES, get_page
 
 BASE = Path(__file__).resolve().parent
 TEMPLATES = BASE / "app" / "templates"
@@ -23,10 +31,12 @@ env = Environment(
 )
 
 
-def _write(page: str, **context) -> None:
-    html = env.get_template("index.html").render(**context)
-    (DIST / page).write_text(html, encoding="utf-8")
-    print(f"  • {page}")
+def _write(template_name: str, dist_path: str, **context) -> None:
+    html = env.get_template(template_name).render(**context)
+    out = DIST / dist_path
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    print(f"  • {dist_path}")
 
 
 def main() -> None:
@@ -35,11 +45,22 @@ def main() -> None:
     DIST.mkdir(parents=True)
 
     print("Building static site → dist/")
-    _write("index.html", sent=False)   # form shown
-    _write("thanks.html", sent=True)    # post-submit success page
+    for page in PAGES:
+        _write(
+            page.template, page.dist_path, page=page, sent=False,
+            case_studies=CASE_STUDIES, blog_posts=BLOG_POSTS,
+            asset_version=ASSET_VERSION, **page.context,
+        )
+
+    contact = get_page("/contact")
+    _write(
+        contact.template, "thanks.html", page=contact, sent=True,
+        case_studies=CASE_STUDIES, blog_posts=BLOG_POSTS,
+        asset_version=ASSET_VERSION, **contact.context,
+    )
 
     shutil.copytree(STATIC, DIST / "static")
-    print("  • static/ (assets + css)")
+    print("  • static/ (assets + css + js)")
     print("Done.")
 
 

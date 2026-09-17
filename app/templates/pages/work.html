@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main %}
+<section class="page-header">
+  <div class="wrap reveal-up">
+    <p class="eyebrow eyebrow-accent">Proof, not promises</p>
+    <h1>Selected work</h1>
+    <p>Real engagements, real products, not slideware. No fabricated screenshots and no invented metrics: what's here is what's confirmed.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="work-grid">
+      {% for cs in case_studies %}
+      <article class="card card-photo reveal-up" style="background-image: url('/static/assets/work/{{ cs.slug }}.jpg')">
+        <div class="lead-row">
+          <span class="{{ 'tag-navy' if cs.pillar == 1 else 'tag' }}">{{ cs.tag_label }}</span>
+        </div>
+        <h3>{{ cs.client }}</h3>
+        <p>{{ cs.sector }}</p>
+        <p>{{ cs.teaser }}</p>
+        <a class="btn btn-outline-light btn-sm" href="/work/{{ cs.slug }}">Read case study</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -23,7 +23,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
   color: var(--navy);
   background: var(--white);
   line-height: 1.5;
@@ -56,6 +56,8 @@ section { scroll-margin-top: 84px; }
 .btn-orange:hover { background: var(--orange-hover); }
 .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
 .btn-outline:hover { background: var(--navy); color: var(--white); }
+.btn-outline-light { background: transparent; color: var(--white); border-color: rgba(255,255,255,.35); }
+.btn-outline-light:hover { background: var(--white); color: var(--navy); }
 .btn-sm { padding: 10px 18px; font-size: 14px; }
 
 /* ---------- header / nav ---------- */
@@ -68,8 +70,12 @@ section { scroll-margin-top: 84px; }
 .brand { color: var(--navy); display: inline-flex; align-items: center; }
 .wordmark { display: block; }
 .primary-nav { display: flex; align-items: center; gap: 34px; }
-.primary-nav a:not(.btn) { font-size: 15px; font-weight: 500; color: var(--text2); }
+.primary-nav a:not(.btn) { font-size: 15px; font-weight: 500; color: var(--text2); transition: color .15s ease; }
 .primary-nav a:not(.btn):hover { color: var(--navy); }
+.primary-nav a:not(.btn).active { color: var(--navy); position: relative; }
+.primary-nav a:not(.btn).active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--orange);
+}
 
 .hamburger { display: none; }   /* shown on mobile */
 
@@ -117,6 +123,7 @@ section { scroll-margin-top: 84px; }
 
 /* ---------- services grid ---------- */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.pillars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .card {
   background: var(--white); border: 1px solid var(--hairline); border-radius: 16px;
   padding: 28px; display: flex; flex-direction: column; gap: 16px; transition: border-color .15s ease;
@@ -137,6 +144,18 @@ section { scroll-margin-top: 84px; }
   font-size: 10px; font-weight: 600; letter-spacing: .14em; color: var(--white);
   border: 1px solid rgba(255,255,255,.3); padding: 4px 9px; border-radius: 999px;
 }
+.tag-navy {
+  font-size: 10px; font-weight: 600; letter-spacing: .14em; color: var(--navy);
+  border: 1px solid var(--hairline); padding: 4px 9px; border-radius: 999px;
+}
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
+.card-list li { font-size: 14px; color: var(--text2); padding-left: 15px; position: relative; }
+.card-list li::before {
+  content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--navy);
+}
+.card-lead .card-list li { color: var(--on-navy); }
+.card-lead .card-list li::before { background: var(--orange); }
 
 /* ---------- why grid ---------- */
 .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
@@ -148,6 +167,7 @@ section { scroll-margin-top: 84px; }
 /* ---------- industries ---------- */
 .ind-group + .ind-group { margin-top: 36px; }
 .ind-label { font-size: 14px; font-weight: 600; color: var(--text2); margin-bottom: 16px; }
+.ind-note { font-size: 16px; color: var(--text2); line-height: 1.55; max-width: 640px; }
 .pills { display: flex; flex-wrap: wrap; gap: 12px; }
 .pill { font-size: 16px; font-weight: 500; padding: 11px 22px; border-radius: 999px; }
 .pill-solid { background: var(--navy); color: var(--white); }
@@ -156,7 +176,8 @@ section { scroll-margin-top: 84px; }
 /* ---------- how we work ---------- */
 .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; list-style: none; }
 .step { padding-top: 24px; border-top: 1px solid var(--line-navy); display: flex; flex-direction: column; gap: 14px; }
-.step .num { font-size: 52px; font-weight: 700; letter-spacing: -0.03em; color: var(--orange); line-height: 1; }
+.step .num { font-size: 72px; font-weight: 700; letter-spacing: -0.03em; color: var(--orange); line-height: 1; opacity: .55; transition: opacity .2s ease; }
+.step:hover .num { opacity: 1; }
 .step h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
 .step p { font-size: 14px; color: var(--on-navy); line-height: 1.55; }
 
@@ -191,15 +212,88 @@ section { scroll-margin-top: 84px; }
 .form-sent p { font-size: 15px; color: var(--text2); }
 .form-sent .btn { align-self: flex-start; margin-top: 6px; }
 
+/* ---------- scroll reveal ---------- */
+/* Scoped to .js (set synchronously in base.html's <head>) so a no-JS visitor
+   always sees full content immediately — nothing is hidden by default. */
+.js .reveal-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal-up.is-revealed { opacity: 1; transform: none; }
+.js .reveal-up.reveal-delay-1 { transition-delay: .08s; }
+.js .reveal-up.reveal-delay-2 { transition-delay: .16s; }
+
+/* ---------- card image (full-width photo banner at top of a service card, no text overlay) ---------- */
+.card-img {
+  width: 100%; aspect-ratio: 16 / 9; border-radius: 12px;
+  background-color: var(--canvas); background-size: cover; background-position: center;
+}
+
+/* ---------- section eyebrow (accent variant of the hero .eyebrow) ---------- */
+.eyebrow-accent { color: var(--orange); }
+
+/* ---------- interior page header (non-Home pages, no full-bleed hero) ---------- */
+.page-header { padding: 56px 0 48px; border-bottom: 1px solid var(--hairline); }
+.page-header .eyebrow { margin-bottom: 14px; }
+.page-header h1 { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: var(--navy); }
+.page-header p { margin-top: 16px; font-size: 18px; color: var(--text2); max-width: 640px; line-height: 1.55; }
+
+/* ---------- alternating pillar row (image-panel + copy) ---------- */
+.pillar-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.pillar-row + .pillar-row { margin-top: 64px; }
+.pillar-row.reverse .pillar-panel { order: 2; }
+.pillar-row.reverse .pillar-copy { order: 1; }
+.pillar-copy h3 { font-size: 30px; margin-bottom: 14px; }
+.pillar-copy > p { font-size: 17px; color: var(--text2); line-height: 1.6; margin-bottom: 18px; }
+.pillar-panel {
+  aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden;
+  background-color: var(--canvas); background-size: contain; background-repeat: no-repeat; background-position: center;
+}
+
+/* ---------- pull-quote / testimonial block ---------- */
+.pull-quote { background: var(--canvas); border-radius: 16px; padding: 36px; margin-top: 32px; }
+.pull-quote .quote-mark { font-family: Georgia, serif; font-size: 64px; line-height: 1; color: var(--orange); opacity: .5; display: block; }
+.pull-quote p { font-size: 19px; font-style: italic; color: var(--navy); line-height: 1.5; margin-top: -14px; }
+.pull-quote .quote-attribution { margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--text2); font-style: normal; }
+
+/* ---------- long-form body list (case studies, full service detail) ---------- */
+.prose-list { list-style: none; margin-top: 12px; }
+.prose-list li { font-size: 17px; color: #37414F; line-height: 1.6; padding-left: 22px; position: relative; margin-bottom: 10px; }
+.prose-list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+.cs-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+/* ---------- work index grid (auto-fit, grows past 2 cards cleanly) ---------- */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+
+/* ---------- card with a real screenshot as background ----------
+   Same legibility technique as .hero-scrim: a gradient scrim (functional,
+   not decorative) so title/copy/tags stay readable over any screenshot. */
+.card-photo {
+  position: relative; background-size: cover; background-position: top center;
+  color: var(--white); min-height: 360px; justify-content: flex-end;
+}
+.card-photo::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(180deg, rgba(14,26,43,.1) 0%, rgba(14,26,43,.55) 55%, rgba(14,26,43,.94) 100%);
+}
+.card-photo > * { position: relative; z-index: 1; }
+.card-photo h3 { color: var(--white); }
+.card-photo p { color: var(--on-navy); }
+.card-photo .tag-navy, .card-photo .tag { background: rgba(255,255,255,.12); color: var(--white); border-color: rgba(255,255,255,.35); }
+.card-photo .card-list li { color: var(--on-navy); }
+.card-photo .card-list li::before { background: var(--orange); }
+.card-photo .icon { background: rgba(255,255,255,.14); color: var(--white); }
+
 /* ---------- footer ---------- */
 .site-footer { background: var(--navy); color: var(--white); padding: 72px 0 36px; }
 .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .footer-brand .brand { color: var(--white); }
 .tagline { margin-top: 16px; font-size: 13px; font-weight: 300; letter-spacing: .18em; color: var(--on-navy); }
-.footer-cols { display: flex; gap: 72px; }
-.footer-col h4 { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #6B7686; margin-bottom: 10px; }
+.footer-cols { display: flex; flex-wrap: wrap; gap: 40px 56px; }
+.footer-col { min-width: 150px; }
+.footer-col h4 { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #6B7686; margin-bottom: 14px; }
 .footer-col a, .footer-col p { font-size: 15px; color: #D6DCE3; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-col a:hover { color: var(--white); }
+.icon-link { display: inline-flex; align-items: center; gap: 7px; }
+.icon-link svg { width: 17px; height: 17px; flex-shrink: 0; }
 .copyright { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-navy); font-size: 13px; color: #6B7686; }
 
 /* ============================================================
@@ -212,6 +306,23 @@ section { scroll-margin-top: 84px; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 720px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 860px) {
+  .pillar-row { grid-template-columns: 1fr; gap: 28px; }
+  .pillar-row .pillar-panel { order: 1 !important; aspect-ratio: 16 / 10; }
+  .pillar-row .pillar-copy { order: 2 !important; }
+  .pillar-row + .pillar-row { margin-top: 40px; }
+  .page-header { padding: 40px 0 32px; }
+  .page-header h1 { font-size: 34px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .pull-quote { padding: 24px; }
+  .pull-quote p { font-size: 17px; }
+  .step .num { font-size: 56px; }
 }
 
 /* mobile: hamburger nav + stacked hero */
@@ -255,7 +366,7 @@ section { scroll-margin-top: 84px; }
   .section h2 { font-size: 30px; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 14px; }
 
-  .services-grid, .why-grid, .steps-grid { grid-template-columns: 1fr; }
+  .services-grid, .pillars-grid, .why-grid, .steps-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   .contact-info h2 { font-size: 28px; }
   .form-row { grid-template-columns: 1fr; }

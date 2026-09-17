@@ -1,0 +1,25 @@
+{% if blog_posts %}
+<section class="section alt" id="blog">
+  <div class="wrap">
+    <div class="rule" aria-hidden="true"></div>
+    <div class="section-head reveal-up">
+      <div>
+        <p class="eyebrow eyebrow-accent">Notes</p>
+        <h2>From the blog</h2>
+      </div>
+      <p>Thoughts on content, marketing, and building software.</p>
+    </div>
+    <div class="pillars-grid">
+      {% for post in blog_posts[:2] %}
+      <article class="card card-photo reveal-up" style="background-image: url('/static/assets/blog/{{ post.slug }}.jpg')">
+        <p class="ind-label" style="margin-bottom: 0;">{{ post.date }} · {{ post.read_time }}</p>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+        <a class="btn btn-outline-light btn-sm" href="/blog/{{ post.slug }}">Read post</a>
+      </article>
+      {% endfor %}
+    </div>
+    <p style="margin-top: 32px;"><a class="btn btn-outline" href="/blog">Read the blog</a></p>
+  </div>
+</section>
+{% endif %}
